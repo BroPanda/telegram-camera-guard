@@ -1,0 +1,270 @@
+:root {
+  --primary: #0088cc;
+  --secondary: #2c3e50;
+  --danger: #e74c3c;
+  --bg: #0f0f0f;
+  --text: #ffffff;
+  --glass: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+#root {
+  height: 100%;
+}
+
+.screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: var(--bg);
+  padding: 20px;
+  z-index: 10;
+  animation: fadeIn 0.3s ease-out;
+  overflow-y: auto;
+}
+
+.hidden {
+  display: none !important;
+}
+
+header h1 {
+  font-size: 24px;
+  margin-bottom: 5px;
+  background: linear-gradient(45deg, #0088cc, #00d2ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card {
+  padding: 20px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.glass {
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+input {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--glass-border);
+  padding: 12px;
+  border-radius: 8px;
+  color: white;
+  outline: none;
+}
+
+button {
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+button.primary {
+  background: var(--primary);
+  color: white;
+}
+
+button.secondary {
+  background: var(--secondary);
+  color: white;
+}
+
+button.danger {
+  background: var(--danger);
+  color: white;
+}
+
+button.text-btn {
+  background: transparent;
+  color: #aaa;
+}
+
+.role-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+.role-card {
+  padding: 25px;
+  text-align: center;
+  border-radius: 20px;
+  transition: border-color 0.3s;
+}
+
+.role-card .icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.role-card:hover {
+  border-color: var(--primary);
+}
+
+.video-container {
+  flex: 1;
+  position: relative;
+  background: black;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
+}
+
+.status-overlay {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0,0,0,0.5);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.live-indicator {
+  color: #ff4757;
+  font-weight: bold;
+}
+
+.live-indicator::before {
+  content: '●';
+  margin-right: 5px;
+  animation: blink 1s infinite;
+}
+
+.controls {
+  padding: 15px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+#remote-videos-container {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  overflow-y: auto;
+  align-content: start;
+}
+
+.center {
+  text-align: center;
+  align-items: center;
+}
+
+.loader {
+  border: 4px solid var(--glass);
+  border-top: 4px solid var(--primary);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+.group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.camera-card {
+  background: var(--glass);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  position: relative;
+}
+
+.camera-info {
+  padding: 6px 10px;
+  background: rgba(0, 0, 0, 0.3);
+  font-size: 0.8em;
+  font-weight: bold;
+  color: var(--primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.camera-snapshot {
+  width: 100%;
+  display: block;
+  cursor: pointer;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+.debug-panel {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.8);
+  color: #0f0;
+  font-family: monospace;
+  font-size: 10px;
+  padding: 5px;
+  z-index: 9999;
+  pointer-events: none;
+  border-top: 1px solid #333;
+}

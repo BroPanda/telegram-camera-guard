@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+.DS_Store
+dist/
+dist-ssr
+*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor folders
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Project specific
+groups.json
+.env
+backup/
+client_old/

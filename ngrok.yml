@@ -1,0 +1,9 @@
+version: "2"
+authtoken: 3Dlps7Dv70cZcWWiDiKUVYfBIbO_482z9NVA7tLZkhgTVTfW1
+tunnels:
+  server:
+    proto: http
+    addr: 3001
+  client:
+    proto: http
+    addr: 5173
