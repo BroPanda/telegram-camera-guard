@@ -10,7 +10,7 @@ const tg = window.Telegram?.WebApp;
 
 function App() {
   const [screen, setScreen] = useState('menu');
-  const [serverUrl, setServerUrl] = useState(localStorage.getItem('server_url') || 'https://hardwired-quake-periscope.ngrok-free.dev');
+  const [serverUrl, setServerUrl] = useState(localStorage.getItem('server_url') || 'https://telegram-camera-guard.onrender.com');
   const [user, setUser] = useState(null);
   const [currentGroup, setCurrentGroup] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
